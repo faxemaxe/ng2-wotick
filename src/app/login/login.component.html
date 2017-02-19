@@ -1,0 +1,15 @@
+<p>
+  login works!
+</p>
+
+
+<form>
+
+  <input type="text" placeholder="email/username" [(ngModel)]="creds.user" name="user"><br>
+  <input type="password" placeholder="password" [(ngModel)]="creds.password" name="pasword"><br>
+  <button (click)="performLogin()">login</button>
+
+</form>
+<p>Status: {{resp}}</p>
+
+<a [routerLink]="['/register']">Register</a>

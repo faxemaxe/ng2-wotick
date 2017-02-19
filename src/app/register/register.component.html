@@ -1,0 +1,19 @@
+<p>
+  register works!
+</p>
+
+<form>
+
+  <input type="text" placeholder="username" [(ngModel)]="newUser.username" name="username"><br>
+  <input type="text" placeholder="email" [(ngModel)]="newUser.email" name="email"><br>
+  <input type="password" placeholder="password" [(ngModel)]="newUser.password" name="pasword"><br>
+  <input type="password" placeholder="repeat password" [(ngModel)]="repeatPassword" name="repeatPassword"><br>
+  <button (click)="performRegister()">register</button>
+
+</form>
+
+<p>
+  Resp: {{resp}}
+</p>
+
+<a [routerLink]="['/login']">back 2 login</a>
