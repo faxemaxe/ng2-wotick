@@ -17,8 +17,7 @@ export class AuthService {
 
     constructor(
         private http: Http,
-        private lsService: LocalStorageService
-    ) {
+        private lsService: LocalStorageService) {
         this.token = this.lsService.get("token");
         if(this.token) this.setUser(this.token);
     }
@@ -38,6 +37,7 @@ export class AuthService {
 
                 if (token) {
                     this.setUser(token);
+                    this.token = token;
                     this.lsService.set("token", token);
                     return true;
                 } else {
@@ -50,6 +50,10 @@ export class AuthService {
 
     isLoggedIn() {
         return this.token && !this.jwtHelper.isTokenExpired(this.token);
+    }
+
+    getUser(): User {
+        return this.currentUser;
     }
 
     logoutUser() {

@@ -2,14 +2,13 @@ export class User {
 
     public email: string;
     public username: string;
+    private userUUID: string;
 
-    private uuid: string;
-
-    constructor(values:Object = {}) {
+    constructor(values: Object = {}) {
         Object.assign(this, values);
     }
 
     getUUID() {
-        return this.uuid;
+        return this.userUUID
     }
 }

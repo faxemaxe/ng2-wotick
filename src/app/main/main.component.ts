@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {User} from "../types/user.type";
 
 @Component({
   selector: 'app-main',
@@ -8,9 +9,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  private loggedUser: User;
+  private uuid: string;
 
   constructor(private authService: AuthService,
-              private router: Router) {}
+              private router: Router) {
+    this.loggedUser = this.authService.getUser()
+  }
 
   ngOnInit() {
   }
