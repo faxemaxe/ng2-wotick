@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/css/_reset.scss";
+
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+html, body, material-app, md-sidenav-container, .my-content {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.p--20 {
+	padding: 20px;
+}
+
+.spacer--20 {
+	padding: 10px 0;
+}
+
+.ml--10 {
+	margin-left: 10px;
+}
+
+.mb--10 {
+	margin-bottom: 10px;
+}

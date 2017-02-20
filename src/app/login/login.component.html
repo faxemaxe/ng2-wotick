@@ -1,15 +1,41 @@
-<p>
-  login works!
-</p>
+<md-card class="centeredCard">
 
+    <md-card-content>
+        <h3>Login</h3>
+        <div class="spacer--20"></div>
+        <form>
 
-<form>
+            <md-input-container class="fullWidth">
+                <input mdInput
+                       type="text"
+                       placeholder="email/username"
+                       [(ngModel)]="creds.user"
+                       name="user">
+            </md-input-container>
+            <md-input-container class="fullWidth">
+                <input mdInput
+                       type="password"
+                       placeholder="password"
+                       [(ngModel)]="creds.password"
+                       name="pasword"
+                       class="fullWidth">
+            </md-input-container>
+            <div class="loginActions">
+                <a md-button color="secondary" [routerLink]="['/register']">register</a>
+                <button md-raised-button color="primary" (click)="performLogin()" [disabled]="idle">login</button>
+            </div>
+        </form>
+    </md-card-content>
+</md-card>
 
-  <input type="text" placeholder="email/username" [(ngModel)]="creds.user" name="user"><br>
-  <input type="password" placeholder="password" [(ngModel)]="creds.password" name="pasword"><br>
-  <button (click)="performLogin()">login</button>
+<div class="spacer--20"></div>
 
-</form>
-<p>Status: {{resp}}</p>
+<md-card *ngIf="resp.length > 0" class="centeredCard">
 
-<a [routerLink]="['/register']">Register</a>
+    <md-card-content>
+        <p>
+            {{resp}}
+        </p>
+    </md-card-content>
+
+</md-card>

@@ -1,5 +1,23 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
 
-<router-outlet></router-outlet>
+
+    <!-- Sidebar -->
+    <md-sidenav #right mode="push" class="p--20">
+        Sidebar content
+    </md-sidenav>
+
+    <!-- Content -->
+
+        <md-toolbar color="primary">
+            <button md-icon-button (click)="right.toggle()">
+                <md-icon>more_vert</md-icon>
+            </button>
+            <span class="ml--10">woTick</span>
+        </md-toolbar>
+
+    <div class="p--20">
+        <router-outlet></router-outlet>
+    </div>
+
+</md-sidenav-container>
+

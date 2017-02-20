@@ -1,0 +1,14 @@
+.centeredCard {
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.loginActions {
+	display: flex;
+	justify-content: flex-end;
+}
