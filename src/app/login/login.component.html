@@ -1,15 +1,31 @@
-<p>
-  login works!
-</p>
+<div class="centeredContent">
+	<div class="wrapper">
+		<div class="g--4-4">
+			<div class="bg--cl-lgray w--400px m0auto">
+				<div class="bg--cl-secondary p--10">
+					<h3 class="fc--cl-bright">Login</h3>
+				</div>
+				<div class="p--10">
+					<form>
 
+						<input class="textInput" type="text" placeholder="email/username" [(ngModel)]="creds.user" name="user">
+						<div class="spacer--10"></div>
+						<input class="textInput" type="password" placeholder="password" [(ngModel)]="creds.password" name="pasword"><br>
 
-<form>
+					</form>
+					<div class="spacer--10"></div>
+					<div class="actionBar">
+						<a class="btn btn--full bg--cl-gray fc--cl-bright" [routerLink]="['/register']">
+							<span>register</span>
+						</a>
+						<button class="btn btn--full ml--10 bg--cl-primary fc--cl-bright" (click)="performLogin()">login</button>
+					</div>
 
-  <input type="text" placeholder="email/username" [(ngModel)]="creds.user" name="user"><br>
-  <input type="password" placeholder="password" [(ngModel)]="creds.password" name="pasword"><br>
-  <button (click)="performLogin()">login</button>
+					<p>Status: {{resp}}</p>
 
-</form>
-<p>Status: {{resp}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<a [routerLink]="['/register']">Register</a>
