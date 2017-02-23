@@ -787,7 +787,12 @@ app-root {
     -ms-flex-align: center;
     -webkit-align-items: center;
     -moz-align-items: center;
-    align-items: center; }
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between; }
 
 .textInput {
   border: none;
@@ -800,7 +805,7 @@ app-root {
   font-size: 16px;
   padding: 10px 0 5px 0; }
 
-.textInput:invalid {
+.textInput:invalid, .textInput.ng-invalid.ng-touched {
   background-color: transparent;
   box-shadow: none;
   border-top: none;
@@ -839,6 +844,14 @@ app-root {
 .btn--full {
   width: 100%; }
 
+.formGroup.ng-invalid.ng-touched input {
+  background-color: transparent;
+  box-shadow: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: #e74c3c; }
+
 .w--400px {
   width: 100%;
   max-width: 400px; }
@@ -854,5 +867,21 @@ app-root {
   -webkit-justify-content: flex-end;
   -moz-justify-content: flex-end;
   justify-content: flex-end; }
+
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px; }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0); } }
 
 /*# sourceMappingURL=bricss.css.map */

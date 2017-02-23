@@ -1,44 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../types/user.type";
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../auth.service";
+import {FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn} from "@angular/forms";
+
+function passwordMatcher(c: AbstractControl) {
+	if(!c.get('password').pristine && !c.get('repeatpassword').pristine ) {
+		return c.get('password').value === c.get('repeatpassword').value
+			? null : {'nomatch': true};
+	}
+	return null
+}
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+	selector: 'app-register',
+	templateUrl: './register.component.html',
+	styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+	private resp: string;
+	private form: FormGroup;
 
-  private newUser: any = {};
-  private repeatPassword: string;
-  private resp: string;
+	constructor(private authService: AuthService,
+				private fb: FormBuilder) {
+		this.form = this.fb.group({
+			username: ['', [Validators.required, Validators.minLength(5)]],
+			email: ['', Validators.required],
+			passwordcheck: this.fb.group({
+				password: ['', [Validators.required, Validators.minLength(5)]],
+				repeatpassword: ['', [Validators.required, Validators.minLength(5)]]
+			}, {validator: passwordMatcher}),
+		})
+	}
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 
-  private performRegister() {
-    this.resp = "";
-
-    switch (true) {
-      case(!this.newUser.password):
-        this.resp = "no pws set";
-            break;
-      case(this.newUser.password != this.repeatPassword):
-        this.resp = "pws do not match";
-            break;
-      case(this.newUser.password.length < 3):
-        this.resp = "pw too short";
-        break;
-      default:
-        this.authService.registerUser(this.newUser)
-            .subscribe(
-                data => console.log(data),
-                err => console.log(err)
-            );
-    }
-  }
+	private performRegister() {
+		this.resp = "";
+		this.authService.registerUser(this.form.value)
+			.subscribe(
+				data => console.log(data),
+				err => {
+					console.log(err)
+				}
+			);
+	}
 
 }

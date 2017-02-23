@@ -1,19 +1,55 @@
-<p>
-  register works!
-</p>
+<div class="centeredContent">
+	<div class="wrapper">
+		<div class="g--4-4">
+			<div class="bg--cl-lgray w--400px m0auto">
+				<div class="bg--cl-secondary p--10">
+					<h3 class="fc--cl-bright">register</h3>
+				</div>
+				<div class="p--10">
 
-<form>
+					<form [formGroup]="form" novalidate>
 
-  <input type="text" placeholder="username" [(ngModel)]="newUser.username" name="username"><br>
-  <input type="text" placeholder="email" [(ngModel)]="newUser.email" name="email"><br>
-  <input type="password" placeholder="password" [(ngModel)]="newUser.password" name="pasword"><br>
-  <input type="password" placeholder="repeat password" [(ngModel)]="repeatPassword" name="repeatPassword"><br>
-  <button (click)="performRegister()">register</button>
+						<input class="textInput"
+							   type="text"
+							   placeholder="username"
+							   formControlName="username">
 
-</form>
+						<div class="spacer--10"></div>
 
-<p>
-  Resp: {{resp}}
-</p>
+						<input class="textInput"
+							   type="email"
+							   placeholder="email"
+							   formControlName="email">
 
-<a [routerLink]="['/login']">back 2 login</a>
+						<div class="spacer--10"></div>
+
+						<div formGroupName="passwordcheck" class="formGroup">
+							<input class="textInput"
+								   type="password"
+								   placeholder="password"
+								   formControlName="password">
+
+							<div class="spacer--10"></div>
+
+							<input class="textInput"
+								   type="password"
+								   placeholder="repeat password"
+								   formControlName="repeatpassword">
+						</div>
+					</form>
+
+					<div class="spacer--10"></div>
+					<div class="actionBar">
+						<a class="btn btn--full bg--cl-gray fc--cl-bright" [routerLink]="['/login']">
+							<span>login</span>
+						</a>
+						<button class="btn btn--full ml--10 bg--cl-primary fc--cl-bright"
+								(click)="performRegister()"
+								[disabled]="form.invalid || idle">register
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
