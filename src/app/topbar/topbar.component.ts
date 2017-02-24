@@ -22,4 +22,8 @@ export class TopbarComponent implements OnInit {
 		return this.authService.getUser();
 	}
 
+	performLogout() {
+		this.authService.logoutUser();
+	}
+
 }

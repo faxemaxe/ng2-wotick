@@ -13,6 +13,8 @@ import {RegisterComponent} from './register/register.component';
 import {AuthGuardService} from "./auth-guard.service";
 import {AuthService} from "./auth.service";
 import { TopbarComponent } from './topbar/topbar.component';
+import {CustomerService} from "./customer.service";
+import { CustomerPlateComponent } from './customer-plate/customer-plate.component';
 
 @NgModule({
 	declarations: [
@@ -20,7 +22,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 		MainComponent,
 		LoginComponent,
 		RegisterComponent,
-		TopbarComponent
+		TopbarComponent,
+		CustomerPlateComponent
 	],
 	imports: [
 		BrowserModule,
@@ -35,7 +38,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 	],
 	providers: [
 		AuthService,
-		AuthGuardService
+		AuthGuardService,
+		CustomerService
 	],
 	bootstrap: [AppComponent]
 })

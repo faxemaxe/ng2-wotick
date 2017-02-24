@@ -22,9 +22,24 @@ app-root {
 		height: 70px;
 		background-color: $cl-secondary;
 
+		h1 {
+			font-size: $fs-xlarge;
+		}
+
 		@include flexbox();
 		@include align-items(center);
 		@include justify-content(space-between);
+		.toolBar {
+			@include flexbox();
+			@include align-items(center);
+
+			p {
+				font-size: $fs-large;
+			}
+		}
+		.toolBar.end {
+			@include justify-content(flex-end);
+		}
 	}
 }
 
@@ -83,7 +98,22 @@ app-root {
 	}
 }
 
+.errorBar {
+	-webkit-transition: opacity 300ms;
+	-moz-transition: opacity 300ms;
+	-ms-transition: opacity 300ms;
+	-o-transition: opacity 300ms;
+	transition: opacity 300ms;
+}
+
 // helper
+
+.icon--medium {
+	padding: 10px;
+	font-size: $fs-xlarge;
+	cursor: pointer;
+}
+
 .w--400px {
 	width: 100%;
 	max-width: 400px;

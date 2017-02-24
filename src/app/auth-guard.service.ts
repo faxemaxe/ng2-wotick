@@ -23,4 +23,16 @@ export class AuthGuardService implements CanActivate {
 			return false;
 		}
 	}
+
+	handleError(err, text?) {
+		if(err.status === 401) {
+			this.authService.logoutUser();
+		}
+		//build error message
+		let errMsg = text || err.json().msg;
+		console.error("<---- ERROR ----->");
+		console.error(errMsg);
+		console.error(err.json());
+		console.error("<---- END ----->");
+	}
 }

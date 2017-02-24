@@ -7,8 +7,4 @@ export class User {
     constructor(values: Object = {}) {
         Object.assign(this, values);
     }
-
-    getUUID() {
-        return this.userUUID
-    }
 }

@@ -1,31 +1,34 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from "@angular/http";
+import {Http, Response, RequestOptions, Headers} from "@angular/http";
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/share';
-import 'rxjs/add/operator/publishReplay';
 import {Observable, BehaviorSubject} from "rxjs";
 import {User} from "./types/user.type";
 import {JwtHelper} from "angular2-jwt";
 import {LocalStorageService} from "angular-2-local-storage";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthService {
-	private baseUrl: string = "https://wotick-backend.herokuapp.com/api";
+	private baseUrl: string;
 	private currentUser: User;
-	private token: any;
+	private _token: any;
 	private jwtHelper = new JwtHelper();
 	private loginStatusStream: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 	constructor(private http: Http,
-				private lsService: LocalStorageService)
+				private lsService: LocalStorageService,
+				private router: Router)
 	{
-		this.token = this.lsService.get("token");
-		if (this.token) this.setUser();
+		this.baseUrl = "https://wotick-backend.herokuapp.com/api";
+		//this.baseUrl = "http://localhost:3000/api";
+		this._token = this.lsService.get("token");
+		if (this._token) this.setUser();
 	}
 
 	registerUser(newUser: Object) {
+		console.log(newUser);
 		return this.http
 			.post(this.baseUrl + '/register/', newUser)
 			.map(this.extractData)
@@ -39,7 +42,7 @@ export class AuthService {
 				let token = this.extractData(resp).token;
 
 				if (token) {
-					this.token = token;
+					this._token = token;
 					this.loginStatusStream.next(this.isLoggedIn());
 					this.setUser();
 					this.lsService.set("token", token);
@@ -60,15 +63,22 @@ export class AuthService {
 	}
 
 	logoutUser() {
-		this.token = null;
+		this._token = null;
 		this.currentUser = null;
 		this.lsService.remove("token");
 		this.loginStatusStream.next(this.isLoggedIn());
+		this.router.navigate(['/login']);
 	}
+
 
 	// Helper
 	isLoggedIn() {
-		return (!!this.token && !this.jwtHelper.isTokenExpired(this.token));
+		return (!!this._token && !this.jwtHelper.isTokenExpired(this._token));
+	}
+
+	getAuthHeader() {
+		let authHeader = new Headers({ 'Authorization': this._token });
+		return new RequestOptions({headers: authHeader});
 	}
 
 	private extractData(resp: Response) {
@@ -80,7 +90,7 @@ export class AuthService {
 	}
 
 	private setUser() {
-		if(this.token) this.currentUser = new User(this.jwtHelper.decodeToken(this.token).user);
+		if(this._token) this.currentUser = new User(this.jwtHelper.decodeToken(this._token).user);
 		this.loginStatusStream.next(this.isLoggedIn());
 		console.log(this.currentUser);
 	}

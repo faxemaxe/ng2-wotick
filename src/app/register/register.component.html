@@ -1,11 +1,11 @@
 <div class="centeredContent">
 	<div class="wrapper">
 		<div class="g--4-4">
-			<div class="bg--cl-lgray w--400px m0auto">
+			<div class="w--400px m0auto">
 				<div class="bg--cl-secondary p--10">
 					<h3 class="fc--cl-bright">register</h3>
 				</div>
-				<div class="p--10">
+				<div class="p--10 bg--cl-lgray">
 
 					<form [formGroup]="form" novalidate>
 
@@ -36,18 +36,21 @@
 								   placeholder="repeat password"
 								   formControlName="repeatpassword">
 						</div>
+						<div class="spacer--10"></div>
+						<div class="actionBar">
+							<a class="btn btn--full bg--cl-gray fc--cl-bright" [routerLink]="['/login']">
+								<span>login</span>
+							</a>
+							<button class="btn btn--full ml--10 bg--cl-primary fc--cl-bright"
+									(click)="performRegister()"
+									[disabled]="form.invalid || idle">register
+							</button>
+						</div>
 					</form>
+				</div>
 
-					<div class="spacer--10"></div>
-					<div class="actionBar">
-						<a class="btn btn--full bg--cl-gray fc--cl-bright" [routerLink]="['/login']">
-							<span>login</span>
-						</a>
-						<button class="btn btn--full ml--10 bg--cl-primary fc--cl-bright"
-								(click)="performRegister()"
-								[disabled]="form.invalid || idle">register
-						</button>
-					</div>
+				<div class="errorBar pl--10 pr--10 pb--10 bg--cl-lgray" [style.opacity]="error.length < 1 ? 0 : 1">
+					<p class="fc--cl-alert ta--center">&nbsp;{{error}}&nbsp;</p>
 				</div>
 			</div>
 		</div>

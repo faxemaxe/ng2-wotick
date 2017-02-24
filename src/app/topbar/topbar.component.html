@@ -1,6 +1,12 @@
 <div class="topNavBar pl--10 pr--10">
-      <h1 class="ta--center fc--cl-primary">
-        woTick
-      </h1>
-      <p class="fc--cl-bright ta--center" [hidden]="!logStatus">Hi, {{logStatus ? getUsername().username : ''}} </p>
+	<div class="toolBar">
+		<i class="icon--medium material-icons fc--cl-primary" *ngIf="logStatus">menu</i>
+		<h1 class="ta--center fc--cl-primary">
+			woTick
+		</h1>
+	</div>
+	<div class="toolBar end" *ngIf="logStatus">
+		<p class="fc--cl-bright ta--center">Hi, {{logStatus ? getUsername().username : ''}} </p>
+		<i class="icon--medium material-icons fc--cl-primary" (click)="performLogout()">lock</i>
+	</div>
 </div>

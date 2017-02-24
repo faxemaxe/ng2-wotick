@@ -1,13 +1,12 @@
 <div class="centeredContent">
 	<div class="wrapper">
 		<div class="g--4-4">
-			<div class="bg--cl-lgray w--400px m0auto {{ failed ? 'shake' : '' }}">
+			<div class="w--400px m0auto {{ failed ? 'shake' : '' }}">
 				<div class="bg--cl-secondary p--10">
 					<h3 class="fc--cl-bright">login</h3>
 				</div>
-				<div class="p--10">
+				<div class="p--10 bg--cl-lgray">
 					<form [formGroup]="form" novalidate>
-
 						<input class="textInput"
 							   type="text"
 							   placeholder="email/username"
@@ -29,6 +28,9 @@
 									[disabled]="form.invalid || idle">login</button>
 						</div>
 					</form>
+				</div>
+				<div class="errorBar pl--10 pr--10 pb--10 bg--cl-lgray" [style.opacity]="error.length < 1 ? 0 : 1">
+					<p class="fc--cl-alert ta--center">&nbsp;{{error}}&nbsp;</p>
 				</div>
 			</div>
 		</div>

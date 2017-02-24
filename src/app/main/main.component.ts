@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
-import {Router} from "@angular/router";
+import {Router, Data} from "@angular/router";
 import {User} from "../types/user.type";
+import {CustomerService} from "../customer.service";
+import {Customer} from "../types/customer.type";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-main',
@@ -9,20 +12,37 @@ import {User} from "../types/user.type";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  private loggedUser: User;
-  private uuid: string;
+  private customers: Customer[];
+  private form: FormGroup;
 
-  constructor(private authService: AuthService,
-              private router: Router) {
-    this.loggedUser = this.authService.getUser()
+  constructor(private router: Router,
+              private customerService: CustomerService,
+              private fb: FormBuilder) {
+
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required]
+    })
+
   }
 
   ngOnInit() {
+    this.customerService.dataStream.subscribe(
+        data => this.customers = data
+    );
+    this.customerService.loadAll();
   }
 
-  performLogout() {
-    this.authService.logoutUser();
-    this.router.navigate(['/login']);
+  addCustomer() {
+    this.customerService.create(this.form.value);
+  }
+
+  deleteCustomer(id: string) {
+    this.customerService.remove(id);
+  }
+
+  updateCustomer() {
+    this.customerService.update(this.customers[1])
   }
 
 }

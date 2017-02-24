@@ -10,27 +10,30 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 	private creds: any = {};
-	private resp: string = "";
+	private error: string = "";
 	private idle: boolean = false;
 	private failed: boolean = false;
 	private form: FormGroup;
 
 	constructor(private authService: AuthService,
 				private router: Router,
-				protected fb: FormBuilder) {
+				private fb: FormBuilder) {
+		this.authService.getLoginStatusStream().subscribe(data => {
+			if(data) this.router.navigate(['/main']);
+		});
 		this.form = this.fb.group({
-			user: ['test', Validators.required],
-			password: ['test', Validators.required]
+			user: ['', Validators.required],
+			password: ['', Validators.required]
 		})
 	}
 
 	ngOnInit() {
 	}
 
-	private performLogin() {
+	performLogin() {
 		this.idle = true;
 		this.failed = false;
-		this.resp = "";
+		this.error = "";
 		this.authService.loginUser(this.form.value)
 			.subscribe(
 				(data) => {
@@ -38,13 +41,13 @@ export class LoginComponent implements OnInit {
 					if (data) {
 						this.router.navigate(['/main'])
 					} else {
-						this.resp = "login failed"
+						this.error = "login failed"
 					}
 				},
 				err => {
 					this.failed = true;
 					this.idle = false;
-					this.resp = err.msg
+					this.error = err.msg
 				}
 			)
 	}
