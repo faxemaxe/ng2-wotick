@@ -834,9 +834,22 @@ app-root {
   border-right: none;
   border-color: #e74c3c; }
 
-.btn {
+.textInput[readonly] {
+  border-color: transparent;
+  cursor: default; }
+
+textarea {
   border: none;
   border-radius: 0;
+  -webkit-appearance: none;
+  width: 100%;
+  min-height: 80px;
+  border-bottom: 2px solid #3498db;
+  resize: none; }
+
+.btn, .btn--flat {
+  border: none;
+  border-radius: 2px;
   -webkit-appearance: none;
   text-decoration: none;
   display: block;
@@ -859,11 +872,27 @@ app-root {
   -moz-align-items: center;
   align-items: center; }
 
-.btn[disabled] {
+.btn[disabled], [disabled].btn--flat {
   cursor: default; }
 
 .btn--full {
   width: 100%; }
+
+.btn--flat {
+  font-size: 14px;
+  padding: 5px 16px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-weight: 600; }
+
+.btn--flat:hover {
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.btn--flat[disabled] {
+  opacity: 0.5; }
+
+.btn--flat[disabled]:hover {
+  background-color: transparent; }
 
 .formGroup.ng-invalid.ng-touched input {
   background-color: transparent;
@@ -879,6 +908,66 @@ app-root {
   -ms-transition: opacity 300ms;
   -o-transition: opacity 300ms;
   transition: opacity 300ms; }
+
+.cardStyle {
+  margin: 10px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  min-height: calc(100% - 20px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .cardStyle form {
+    width: 100%; }
+  .cardStyle .cardHeader {
+    padding: 10px;
+    width: 100%;
+    -webkit-align-self: flex-start;
+    -moz-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center; }
+    .cardStyle .cardHeader i {
+      font-size: 36px;
+      margin-right: 10px; }
+    .cardStyle .cardHeader .headerContent {
+      width: calc(100% - 46px); }
+  .cardStyle .cardContent {
+    width: 100%;
+    padding: 10px; }
+    .cardStyle .cardContent p {
+      line-height: 150%; }
+  .cardStyle .cardAction {
+    width: 100%;
+    padding: 10px;
+    -webkit-align-self: flex-end;
+    -moz-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end; }
 
 .icon--medium {
   padding: 10px;
@@ -916,5 +1005,17 @@ app-root {
     transform: translate3d(-4px, 0, 0); }
   40%, 60% {
     transform: translate3d(4px, 0, 0); } }
+.cardItemHolder {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .cardItemHolder app-customer-plate {
+    width: 50%; }
 
 /*# sourceMappingURL=bricss.css.map */

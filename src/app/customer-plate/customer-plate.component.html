@@ -1,7 +1,32 @@
 <div class="cardStyle">
+	<form #customerForm="ngForm" novalidate>
+		<div class="cardHeader">
+			<i class="material-icons">person</i>
+			<div class="headerContent">
+				<input type="text"
+					   name="name"
+					   class="textInput"
+					   [(ngModel)]="customer.name"
+					   [readonly]="!editable"
+					   required>
+			</div>
+		</div>
+		<div class="cardContent">
+			<p [hidden]="editable">{{customer.description}}</p>
+			<textarea name="description"
+					  [hidden]="!editable"
+					  minlength="5"
+					  rows="4"
+					  [(ngModel)]="customer.description"
+					  required></textarea>
+		</div>
+	</form>
+	<div class="cardAction">
+		<button *ngIf="editable" class="btn--flat fc--cl-alert" (click)="cancelEdit()">cancel</button>
+		<button *ngIf="editable" class="btn--flat" (click)="saveEdit()" [disabled]="customerForm.form.invalid">save</button>
 
-    <div class="p--10">
-      <i class="material-icons">person</i>
-    </div>
+		<button *ngIf="!editable" class="btn--flat fc--cl-alert" (click)="deleteCustomer()">delete</button>
+		<button *ngIf="!editable" class="btn--flat" (click)="startEdit()">edit</button>
+	</div>
 
 </div>

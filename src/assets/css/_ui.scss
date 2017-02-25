@@ -64,10 +64,25 @@ app-root {
 	border-right: none;
 	border-color: $cl-alert;
 }
+.textInput[readonly] {
+	border-color: transparent;
+	cursor: default;
+}
+
+textarea {
+	border: none;
+	border-radius: 0;
+	-webkit-appearance: none;
+
+	width: 100%;
+	min-height: 80px;
+	border-bottom: 2px solid $cl-primary;
+	resize: none;
+}
 
 .btn {
 	border: none;
-	border-radius: 0;
+	border-radius: 2px;
 	-webkit-appearance: none;
 	text-decoration: none;
 
@@ -85,6 +100,23 @@ app-root {
 }
 .btn--full {
 	width: 100%;
+}
+.btn--flat {
+	@extend .btn;
+	font-size: 14px;
+	padding: 5px 16px;
+	background-color: transparent;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.btn--flat:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.btn--flat[disabled] {
+	opacity: 0.5;
+}
+.btn--flat[disabled]:hover {
+	background-color: transparent;
 }
 
 .formGroup.ng-invalid.ng-touched {
@@ -104,6 +136,54 @@ app-root {
 	-ms-transition: opacity 300ms;
 	-o-transition: opacity 300ms;
 	transition: opacity 300ms;
+}
+
+.cardStyle {
+	margin: 10px;
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+	min-height: calc(100% - 20px);
+
+	@include flexbox();
+	@include flex-wrap(wrap);
+
+	form {
+		width: 100%;
+	}
+
+	.cardHeader {
+		padding: 10px;
+		width: 100%;
+
+		@include align-self(flex-start);
+		@include flexbox();
+		@include align-items(center);
+
+		i {
+			font-size: 36px;
+			margin-right: 10px;
+		}
+		.headerContent {
+			width: calc(100% - 46px);
+		}
+	}
+
+	.cardContent {
+		width: 100%;
+		padding: 10px;
+
+		p {
+			line-height: 150%;
+		}
+	}
+
+	.cardAction {
+		width: 100%;
+		padding: 10px;
+
+		@include align-self(flex-end);
+		@include flexbox();
+		@include justify-content(flex-end);
+	}
 }
 
 // helper
@@ -147,5 +227,14 @@ app-root {
 
 	40%, 60% {
 		transform: translate3d(4px, 0, 0);
+	}
+}
+
+.cardItemHolder {
+	@include flexbox();
+	@include flex-wrap(wrap);
+
+	app-customer-plate {
+		width: 50%;
 	}
 }

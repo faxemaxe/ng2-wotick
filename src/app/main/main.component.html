@@ -6,29 +6,12 @@
 	</button>
 </form>
 
-<table>
-	<tr>
-		<th>name</th>
-		<th>desc</th>
-		<th>uuid</th>
-		<th>action</th>
-	</tr>
+<div class="wrapper">
 
-	<tr *ngFor="let customer of customers">
-		<td class="p--10">{{customer.name}}</td>
-		<td class="p--10">{{customer.description}}</td>
-		<td class="p--10">{{customer.customerUUID}}</td>
-		<td class="p--10">
-			<button (click)="deleteCustomer(customer.customerUUID)">DEL</button>
-		</td>
-	</tr>
+	<div class="g--4-4">
+		<div class="cardItemHolder">
+			<app-customer-plate *ngFor="let customer of customers" [customer]="customer"></app-customer-plate>
+		</div>
+	</div>
 
-
-</table>
-
-<form *ngIf="customers.length > 1">
-	<input name="name" type="text" [(ngModel)]="customers[1].name">
-	<input name="description" type="text" [(ngModel)]="customers[1].description">
-	<button (click)="updateCustomer()">UPD</button>
-</form>
-
+</div>
