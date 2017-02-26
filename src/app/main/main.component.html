@@ -1,16 +1,20 @@
-<form [formGroup]="form" novalidate>
-	<input formControlName="name" type="text" placeholder="name">
-	<input formControlName="description" type="text" placeholder="desc">
-	<button (click)="addCustomer()">
-		ADD
-	</button>
-</form>
+<div class="wrapper">
+	<div class="g--1-4">&nbsp;</div>
+	<div class="g--2-4" [hidden]="createNew">
+		<button (click)="createNew = true" class="mt--10 btn btn--full bg--cl-succes fc--cl-bright">create</button>
+	</div>
+	<div class="g--2-4" [hidden]="!createNew">
+		<app-customer-plate [createMode]="true" (created)="createdCallback()"></app-customer-plate>
+	</div>
+	<div class="g--1-4">&nbsp;</div>
+
+</div>
 
 <div class="wrapper">
 
 	<div class="g--4-4">
 		<div class="cardItemHolder">
-			<app-customer-plate *ngFor="let customer of customers" [customer]="customer"></app-customer-plate>
+			<app-customer-plate *ngFor="let customer of customers | orderByDate:'createdAt':'DESC'" [customer]="customer"></app-customer-plate>
 		</div>
 	</div>
 

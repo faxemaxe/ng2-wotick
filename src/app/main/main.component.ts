@@ -14,6 +14,7 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 export class MainComponent implements OnInit {
   private customers: Customer[];
   private form: FormGroup;
+  createNew: boolean;
 
   constructor(private router: Router,
               private customerService: CustomerService,
@@ -33,16 +34,8 @@ export class MainComponent implements OnInit {
     this.customerService.loadAll();
   }
 
-  addCustomer() {
-    this.customerService.create(this.form.value);
-  }
-
-  deleteCustomer(id: string) {
-    this.customerService.remove(id);
-  }
-
-  updateCustomer() {
-    this.customerService.update(this.customers[1])
+  createdCallback() {
+    this.createNew = false;
   }
 
 }

@@ -6,6 +6,7 @@
 				<input type="text"
 					   name="name"
 					   class="textInput"
+					   placeholder="customer name"
 					   [(ngModel)]="customer.name"
 					   [readonly]="!editable"
 					   required>
@@ -14,19 +15,31 @@
 		<div class="cardContent">
 			<p [hidden]="editable">{{customer.description}}</p>
 			<textarea name="description"
-					  [hidden]="!editable"
 					  minlength="5"
 					  rows="4"
+					  placeholder="customer description"
+					  [hidden]="!editable"
 					  [(ngModel)]="customer.description"
 					  required></textarea>
 		</div>
 	</form>
 	<div class="cardAction">
 		<button *ngIf="editable" class="btn--flat fc--cl-alert" (click)="cancelEdit()">cancel</button>
-		<button *ngIf="editable" class="btn--flat" (click)="saveEdit()" [disabled]="customerForm.form.invalid">save</button>
+		<button *ngIf="editable" class="btn--flat" (click)="saveEdit()" [disabled]="customerForm.form.invalid">save
+		</button>
 
-		<button *ngIf="!editable" class="btn--flat fc--cl-alert" (click)="deleteCustomer()">delete</button>
+		<button *ngIf="!editable" class="btn--flat fc--cl-alert" (click)="dialogIsOpen = true">delete</button>
 		<button *ngIf="!editable" class="btn--flat" (click)="startEdit()">edit</button>
+	</div>
+
+	<div class="dialogOverlay" *ngIf="dialogIsOpen">
+		<p class="ta--center fc--cl-bright">
+			Are you sure?
+		</p>
+		<div class="overlayAction">
+			<button class="btn--flat fc--cl-primary" (click)="dialogIsOpen = false">no, don't</button>
+			<button class="btn--flat fc--cl-alert" (click)="deleteCustomer()">yes, delete</button>
+		</div>
 	</div>
 
 </div>

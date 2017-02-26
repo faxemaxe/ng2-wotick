@@ -15,6 +15,7 @@ import {AuthService} from "./auth.service";
 import { TopbarComponent } from './topbar/topbar.component';
 import {CustomerService} from "./customer.service";
 import { CustomerPlateComponent } from './customer-plate/customer-plate.component';
+import {OrderByDatePipe} from "./pipe/orderbydate.pipe";
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { CustomerPlateComponent } from './customer-plate/customer-plate.componen
 		LoginComponent,
 		RegisterComponent,
 		TopbarComponent,
-		CustomerPlateComponent
+		CustomerPlateComponent,
+		OrderByDatePipe
 	],
 	imports: [
 		BrowserModule,

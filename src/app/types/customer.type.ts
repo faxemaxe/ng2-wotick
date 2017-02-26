@@ -1,6 +1,7 @@
 export interface Customer {
-	 name: string;
-	 description: string;
-	 userUUID: string;
-	 customerUUID: string;
+	name: string;
+	description: string;
+	userUUID: string;
+	customerUUID: string;
+	createdAt: string;
 }
