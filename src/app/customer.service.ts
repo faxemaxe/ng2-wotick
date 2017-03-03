@@ -48,6 +48,7 @@ export class CustomerService {
 			.map(this.extractData)
 			.subscribe(
 				data => {
+					console.log(data);
 					this.dataStorage.customers = data;
 					this.updateStream()
 				},

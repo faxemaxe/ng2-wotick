@@ -2,44 +2,70 @@ app-root {
 	height: 100%;
 	display: block;
 
-	.app-content {
-		height: calc(100% - 70px);
-		width: 100%;
-
-		.centeredContent {
-			height: 100%;
-			width: 100%;
-			display: block;
-
-			@include flexbox();
-			@include align-items(center);
-			@include justify-content(center);
-		}
+	app-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
 	}
 
-	.topNavBar{
+	.holder {
+		display: block;
+		height: 100%;
 		width: 100%;
-		height: 70px;
-		background-color: $cl-secondary;
+		position: fixed;
 
-		h1 {
-			font-size: $fs-xlarge;
-		}
+		-webkit-transition: transform 250ms;
+		-moz-transition: transform 250ms;
+		-o-transition: transform 250ms;
+		transition: transform 250ms;
 
-		@include flexbox();
-		@include align-items(center);
-		@include justify-content(space-between);
-		.toolBar {
-			@include flexbox();
-			@include align-items(center);
+		.app-content {
+			height: calc(100% - 70px);
+			width: 100%;
+			background-color: $cl-bright;
 
-			p {
-				font-size: $fs-large;
+			.centeredContent {
+				height: 100%;
+				width: 100%;
+				display: block;
+
+				@include flexbox();
+				@include align-items(center);
+				@include justify-content(center);
 			}
 		}
-		.toolBar.end {
-			@include justify-content(flex-end);
+
+		.topNavBar {
+			width: 100%;
+			height: 70px;
+			background-color: $cl-secondary;
+
+			h1 {
+				font-size: $fs-xlarge;
+			}
+
+			@include flexbox();
+			@include align-items(center);
+			@include justify-content(space-between);
+			.toolBar {
+				@include flexbox();
+				@include align-items(center);
+
+				p {
+					font-size: $fs-large;
+				}
+			}
+			.toolBar.end {
+				@include justify-content(flex-end);
+			}
 		}
+	}
+	.holder.openMenu {
+		-webkit-transform: translateX(200px);
+		-moz-transform: translateX(200px);
+		-o-transform: translateX(200px);
+		transform: translateX(200px);
 	}
 }
 
@@ -56,6 +82,7 @@ app-root {
 	font-size: $fs-medium;
 	padding: 10px 0 5px 0;
 }
+
 .textInput.ng-invalid.ng-touched {
 	background-color: transparent;
 	box-shadow: none;
@@ -64,6 +91,7 @@ app-root {
 	border-right: none;
 	border-color: $cl-alert;
 }
+
 .textInput[readonly] {
 	border-color: transparent;
 	cursor: default;
@@ -95,12 +123,15 @@ textarea {
 	@include justify-content(center);
 	@include align-items(center);
 }
+
 .btn[disabled] {
 	cursor: default;
 }
+
 .btn--full {
 	width: 100%;
 }
+
 .btn--flat {
 	@extend .btn;
 	font-size: 14px;
@@ -109,12 +140,15 @@ textarea {
 	text-transform: uppercase;
 	font-weight: 600;
 }
+
 .btn--flat:hover {
 	background-color: rgba(0, 0, 0, 0.1);
 }
+
 .btn--flat[disabled] {
 	opacity: 0.5;
 }
+
 .btn--flat[disabled]:hover {
 	background-color: transparent;
 }
@@ -138,9 +172,23 @@ textarea {
 	transition: opacity 300ms;
 }
 
+.infoChip {
+
+	padding: 8px 12px;
+	border-radius: 16px;
+
+	@include flexbox();
+	@include align-items(center);
+
+	.material-icons {
+		font-size: 16px;
+	}
+
+}
+
 .cardStyle {
 	margin: 10px;
-	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 	min-height: calc(100% - 20px);
 	position: relative;
 
@@ -177,13 +225,17 @@ textarea {
 		}
 	}
 
-	.cardAction {
+	.cardFooter {
 		width: 100%;
 		padding: 10px;
 
 		@include align-self(flex-end);
 		@include flexbox();
-		@include justify-content(flex-end);
+		@include justify-content(space-between);
+
+		div {
+			@include flexbox();
+		}
 	}
 
 	.dialogOverlay {
@@ -192,12 +244,11 @@ textarea {
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0, 0, 0, 0.8);
+		background-color: rgba(255, 255, 255, 0.95);
 
 		@include flexbox();
 		@include justify-content(center);
 		@include flex-direction(column);
-
 
 		.overlayAction {
 			@include flexbox();
@@ -232,6 +283,7 @@ textarea {
 	backface-visibility: hidden;
 	perspective: 1000px;
 }
+
 @keyframes shake {
 	10%, 90% {
 		transform: translate3d(-1px, 0, 0);
@@ -256,5 +308,26 @@ textarea {
 
 	app-customer-plate {
 		width: 50%;
+	}
+}
+
+.menuContainer {
+	width: 200px;
+	height: 100%;
+	background-color: $cl-primary;
+
+	ul {
+		width: 100%;
+		li {
+			width: 100%;
+			a {
+				text-decoration: none;
+				width: 100%;
+				text-align: center;
+				color: $cl-bright;
+				padding: 15px 10px;
+				display: block;
+			}
+		}
 	}
 }

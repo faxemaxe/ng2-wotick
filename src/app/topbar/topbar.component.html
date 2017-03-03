@@ -1,6 +1,6 @@
 <div class="topNavBar pl--10 pr--10">
 	<div class="toolBar">
-		<i class="icon--medium material-icons fc--cl-primary" *ngIf="logStatus">menu</i>
+		<i class="icon--medium material-icons fc--cl-primary" *ngIf="logStatus" (click)="toggleMenu.emit()">menu</i>
 		<h1 class="ta--center fc--cl-primary">
 			woTick
 		</h1>

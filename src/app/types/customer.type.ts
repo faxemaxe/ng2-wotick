@@ -4,4 +4,5 @@ export interface Customer {
 	userUUID: string;
 	customerUUID: string;
 	createdAt: string;
+	projectCount: number;
 }

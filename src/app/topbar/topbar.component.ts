@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {AuthService} from "../auth.service";
 import {User} from "../types/user.type";
 
@@ -13,6 +13,8 @@ export class TopbarComponent implements OnInit {
 	constructor(private authService: AuthService) {
 		this.authService.getLoginStatusStream().subscribe(data => this.logStatus = data)
 	}
+
+	@Output() toggleMenu = new EventEmitter();
 
 	ngOnInit() {
 

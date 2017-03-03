@@ -3,6 +3,7 @@ import {MainComponent} from "./main/main.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {AuthGuardService} from "./auth-guard.service";
+import {ProjectsComponent} from "./projects/projects.component";
 
 const appRoutes: Routes = [
 
@@ -18,6 +19,10 @@ const appRoutes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'projects',
+        component: ProjectsComponent
     },
     {
         path: '',

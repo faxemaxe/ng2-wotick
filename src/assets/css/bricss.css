@@ -752,13 +752,47 @@ i {
 app-root {
   height: 100%;
   display: block; }
-  app-root .app-content {
-    height: calc(100% - 70px);
-    width: 100%; }
-    app-root .app-content .centeredContent {
-      height: 100%;
+  app-root app-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%; }
+  app-root .holder {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: transform 250ms;
+    -moz-transition: transform 250ms;
+    -o-transition: transform 250ms;
+    transition: transform 250ms; }
+    app-root .holder .app-content {
+      height: calc(100% - 70px);
       width: 100%;
-      display: block;
+      background-color: #FFFFFF; }
+      app-root .holder .app-content .centeredContent {
+        height: 100%;
+        width: 100%;
+        display: block;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center; }
+    app-root .holder .topNavBar {
+      width: 100%;
+      height: 70px;
+      background-color: #34495e;
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-flex;
@@ -769,51 +803,37 @@ app-root {
       -webkit-align-items: center;
       -moz-align-items: center;
       align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      -moz-justify-content: center;
-      justify-content: center; }
-  app-root .topNavBar {
-    width: 100%;
-    height: 70px;
-    background-color: #34495e;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    justify-content: space-between; }
-    app-root .topNavBar h1 {
-      font-size: 28px; }
-    app-root .topNavBar .toolBar {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      -moz-align-items: center;
-      align-items: center; }
-      app-root .topNavBar .toolBar p {
-        font-size: 20px; }
-    app-root .topNavBar .toolBar.end {
-      -webkit-box-pack: end;
-      -ms-flex-pack: end;
-      -webkit-justify-content: flex-end;
-      -moz-justify-content: flex-end;
-      justify-content: flex-end; }
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      justify-content: space-between; }
+      app-root .holder .topNavBar h1 {
+        font-size: 28px; }
+      app-root .holder .topNavBar .toolBar {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center; }
+        app-root .holder .topNavBar .toolBar p {
+          font-size: 20px; }
+      app-root .holder .topNavBar .toolBar.end {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        -webkit-justify-content: flex-end;
+        -moz-justify-content: flex-end;
+        justify-content: flex-end; }
+  app-root .holder.openMenu {
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px); }
 
 .textInput {
   border: none;
@@ -909,6 +929,22 @@ textarea {
   -o-transition: opacity 300ms;
   transition: opacity 300ms; }
 
+.infoChip {
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center; }
+  .infoChip .material-icons {
+    font-size: 16px; }
+
 .cardStyle {
   margin: 10px;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -952,7 +988,7 @@ textarea {
     padding: 10px; }
     .cardStyle .cardContent p {
       line-height: 150%; }
-  .cardStyle .cardAction {
+  .cardStyle .cardFooter {
     width: 100%;
     padding: 10px;
     -webkit-align-self: flex-end;
@@ -964,18 +1000,24 @@ textarea {
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    -webkit-justify-content: flex-end;
-    -moz-justify-content: flex-end;
-    justify-content: flex-end; }
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between; }
+    .cardStyle .cardFooter div {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex; }
   .cardStyle .dialogOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.95);
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-flex;
@@ -1052,5 +1094,21 @@ textarea {
   flex-wrap: wrap; }
   .cardItemHolder app-customer-plate {
     width: 50%; }
+
+.menuContainer {
+  width: 200px;
+  height: 100%;
+  background-color: #3498db; }
+  .menuContainer ul {
+    width: 100%; }
+    .menuContainer ul li {
+      width: 100%; }
+      .menuContainer ul li a {
+        text-decoration: none;
+        width: 100%;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 15px 10px;
+        display: block; }
 
 /*# sourceMappingURL=bricss.css.map */

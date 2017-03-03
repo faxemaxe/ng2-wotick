@@ -23,17 +23,27 @@
 					  required></textarea>
 		</div>
 	</form>
-	<div class="cardAction">
-		<button *ngIf="editable" class="btn--flat fc--cl-alert" (click)="cancelEdit()">cancel</button>
-		<button *ngIf="editable" class="btn--flat" (click)="saveEdit()" [disabled]="customerForm.form.invalid">save
-		</button>
+	<div class="cardFooter">
+		<div class="chipsHolder">
+			<div class="infoChip bg--cl-lgray">
+				<i class="material-icons">folder</i>
+				&nbsp;
+				<span>{{customer.projCount}}</span>
+			</div>
+		</div>
 
-		<button *ngIf="!editable" class="btn--flat fc--cl-alert" (click)="dialogIsOpen = true">delete</button>
-		<button *ngIf="!editable" class="btn--flat" (click)="startEdit()">edit</button>
+		<div class="buttonHolder">
+			<button *ngIf="editable" class="btn--flat fc--cl-alert" (click)="cancelEdit()">cancel</button>
+			<button *ngIf="editable" class="btn--flat" (click)="saveEdit()" [disabled]="customerForm.form.invalid">save
+			</button>
+
+			<button *ngIf="!editable" class="btn--flat fc--cl-alert" (click)="dialogIsOpen = true">delete</button>
+			<button *ngIf="!editable" class="btn--flat" (click)="startEdit()">edit</button>
+		</div>
 	</div>
 
 	<div class="dialogOverlay" *ngIf="dialogIsOpen">
-		<p class="ta--center fc--cl-bright">
+		<p class="ta--center">
 			Are you sure?
 		</p>
 		<div class="overlayAction">

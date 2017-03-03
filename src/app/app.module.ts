@@ -16,6 +16,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 import {CustomerService} from "./customer.service";
 import { CustomerPlateComponent } from './customer-plate/customer-plate.component';
 import {OrderByDatePipe} from "./pipe/orderbydate.pipe";
+import { MenuComponent } from './menu/menu.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +27,9 @@ import {OrderByDatePipe} from "./pipe/orderbydate.pipe";
 		RegisterComponent,
 		TopbarComponent,
 		CustomerPlateComponent,
-		OrderByDatePipe
+		OrderByDatePipe,
+		MenuComponent,
+		ProjectsComponent
 	],
 	imports: [
 		BrowserModule,

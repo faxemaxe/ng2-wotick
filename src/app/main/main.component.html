@@ -14,6 +14,7 @@
 
 	<div class="g--4-4">
 		<div class="cardItemHolder">
+			<!-- todo dont use pipe, sort array on stream emit in component logic -->
 			<app-customer-plate *ngFor="let customer of customers | orderByDate:'createdAt':'DESC'" [customer]="customer"></app-customer-plate>
 		</div>
 	</div>
