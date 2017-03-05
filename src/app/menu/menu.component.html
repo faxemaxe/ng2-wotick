@@ -2,7 +2,7 @@
 
   <ul>
     <li *ngFor="let link of links">
-      <a [routerLink]="link.path" routerLinkActive="active">
+      <a (click)="goToRoute(link.path)" routerLinkActive="active">
         {{link.title}}
       </a>
     </li>

@@ -1,3 +1,41 @@
+<div class="wrapper">
+
+	<div class="g--4-4">
+
+		<form [formGroup]="form" novalidate>
+
+			<input 	type="text"
+				   	placeholder="name"
+				   	formControlName="name">
+
+			<input 	type="text"
+				   	placeholder="description"
+				   	formControlName="description">
+
+			<input 	type="checkbox"
+					id="isActiveCheck"
+					formControlName="isActive">
+
+			<app-custom-select formControlName="customerUUID" [list]="customers" ></app-custom-select>
+
+		</form>
+
+		<button (click)="createProj()">ADD</button>
+
+	</div>
+
+</div>
+
 <p>
-  projects works!
+	Form Data: <br>
+	{{form.value | json}}
+
+	<br><br>
+	Customers: <br>
+	{{customers | json}}
+
+	<br><br>
+	Projects: <br>
+	{{projects | json}}
+
 </p>

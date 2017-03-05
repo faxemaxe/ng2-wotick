@@ -1,6 +1,7 @@
-<app-menu></app-menu>
+<app-topbar (toggleMenu)="menu()"></app-topbar>
+
 <div class="holder {{menuIsOpen ? 'openMenu' : ''}}">
-	<app-topbar (toggleMenu)="menuIsOpen = !menuIsOpen"></app-topbar>
+	<app-menu (toggleMenu)="menu()"></app-menu>
 	<div class="app-content">
 		<router-outlet></router-outlet>
 	</div>

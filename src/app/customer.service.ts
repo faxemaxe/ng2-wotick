@@ -18,10 +18,10 @@ export class CustomerService {
 		customers: Customer[]
 	};
 
-	constructor(private http: Http, private authService: AuthService, private authGuard: AuthGuardService){
+	constructor(private http: Http, private authService: AuthService, private authGuard: AuthGuardService) {
 		this.baseUrl = "https://wotick-backend.herokuapp.com/api";
 		//this.baseUrl = "http://localhost:3000/api";
-		this.dataStorage = { customers: [] };
+		this.dataStorage = {customers: []};
 		this._customers = <BehaviorSubject<Customer[]>> new BehaviorSubject([]);
 		this.customerStream = this._customers.asObservable();
 	}
@@ -48,7 +48,6 @@ export class CustomerService {
 			.map(this.extractData)
 			.subscribe(
 				data => {
-					console.log(data);
 					this.dataStorage.customers = data;
 					this.updateStream()
 				},
@@ -64,13 +63,13 @@ export class CustomerService {
 					let notFound = true;
 
 					this.dataStorage.customers.forEach((item, index) => {
-						if(item.customerUUID === data.costumerUUID) {
+						if (item.customerUUID === data.costumerUUID) {
 							this.dataStorage.customers[index] = data;
 							notFound = false;
 						}
 					});
 
-					if(notFound) this.dataStorage.customers.push(data);
+					if (notFound) this.dataStorage.customers.push(data);
 					this.updateStream();
 				},
 				err => this.authGuard.handleError(err)
@@ -83,7 +82,7 @@ export class CustomerService {
 			.subscribe(
 				data => {
 					this.dataStorage.customers.forEach((item, index) => {
-						if(item.customerUUID === data.costumerUUID) {
+						if (item.customerUUID === data.costumerUUID) {
 							this.dataStorage.customers[index] = data;
 						}
 					});
@@ -100,12 +99,11 @@ export class CustomerService {
 					this.dataStorage.customers.forEach((item, index) => {
 						if (item.customerUUID === customerId) this.dataStorage.customers.splice(index, 1);
 					});
-				this.updateStream();
+					this.updateStream();
 				},
 				err => this.authGuard.handleError(err)
 			)
 	}
-
 
 
 	//helper

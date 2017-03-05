@@ -29,7 +29,17 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.customerService.dataStream.subscribe(
-        data => this.customers = data
+        data => {
+          this.customers = data.sort((a, b) => {
+            if(new Date(a['createdAt']) < new Date(b['createdAt'])) {
+              return 1;
+            }
+            if(new Date(a['createdAt']) > new Date(b['createdAt'])) {
+              return -1;
+            }
+            return 0;
+          });
+        }
     );
     this.customerService.loadAll();
   }

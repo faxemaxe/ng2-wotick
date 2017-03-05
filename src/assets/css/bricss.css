@@ -752,24 +752,63 @@ i {
 app-root {
   height: 100%;
   display: block; }
-  app-root app-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%; }
+  app-root .topNavBar {
+    width: 100%;
+    height: 70px;
+    background-color: #34495e;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between; }
+    app-root .topNavBar h1 {
+      font-size: 28px; }
+    app-root .topNavBar .toolBar {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center; }
+      app-root .topNavBar .toolBar p {
+        font-size: 20px; }
+    app-root .topNavBar .toolBar.end {
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      -webkit-justify-content: flex-end;
+      -moz-justify-content: flex-end;
+      justify-content: flex-end; }
   app-root .holder {
     display: block;
-    height: 100%;
+    height: calc(100% - 70px);
     width: 100%;
-    position: fixed;
-    -webkit-transition: transform 250ms;
-    -moz-transition: transform 250ms;
-    -o-transition: transform 250ms;
-    transition: transform 250ms; }
+    position: relative;
+    overflow: hidden; }
     app-root .holder .app-content {
-      height: calc(100% - 70px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
       width: 100%;
-      background-color: #FFFFFF; }
+      background-color: #FFFFFF;
+      -webkit-transition: left 250ms;
+      -moz-transition: left 250ms;
+      -o-transition: left 250ms;
+      transition: left 250ms; }
       app-root .holder .app-content .centeredContent {
         height: 100%;
         width: 100%;
@@ -789,51 +828,13 @@ app-root {
         -webkit-justify-content: center;
         -moz-justify-content: center;
         justify-content: center; }
-    app-root .holder .topNavBar {
-      width: 100%;
-      height: 70px;
-      background-color: #34495e;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      -moz-align-items: center;
-      align-items: center;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      -webkit-justify-content: space-between;
-      -moz-justify-content: space-between;
-      justify-content: space-between; }
-      app-root .holder .topNavBar h1 {
-        font-size: 28px; }
-      app-root .holder .topNavBar .toolBar {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        -moz-align-items: center;
-        align-items: center; }
-        app-root .holder .topNavBar .toolBar p {
-          font-size: 20px; }
-      app-root .holder .topNavBar .toolBar.end {
-        -webkit-box-pack: end;
-        -ms-flex-pack: end;
-        -webkit-justify-content: flex-end;
-        -moz-justify-content: flex-end;
-        justify-content: flex-end; }
-  app-root .holder.openMenu {
-    -webkit-transform: translateX(200px);
-    -moz-transform: translateX(200px);
-    -o-transform: translateX(200px);
-    transform: translateX(200px); }
+    app-root .holder app-menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%; }
+  app-root .holder.openMenu .app-content {
+    left: 200px; }
 
 .textInput {
   border: none;
@@ -1102,13 +1103,14 @@ textarea {
   .menuContainer ul {
     width: 100%; }
     .menuContainer ul li {
-      width: 100%; }
+      width: 100%;
+      border-bottom: 1px solid #FFFFFF; }
       .menuContainer ul li a {
         text-decoration: none;
         width: 100%;
-        text-align: center;
         color: #FFFFFF;
         padding: 15px 10px;
-        display: block; }
+        display: block;
+        cursor: pointer; }
 
 /*# sourceMappingURL=bricss.css.map */

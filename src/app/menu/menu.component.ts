@@ -1,27 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+	selector: 'app-menu',
+	templateUrl: './menu.component.html',
+	styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  links: any[];
+	links: any[];
 
-  constructor() {
-    this.links = [
-      {
-        title: 'customers',
-        path: '/main'
-      },
-      {
-        title: 'projects',
-        path: 'projects'
-      }
-    ]
-  }
+	constructor(private router: Router) {
+		this.links = [
+			{
+				title: 'customers',
+				path: '/main'
+			},
+			{
+				title: 'projects',
+				path: 'projects'
+			}
+		]
+	}
 
-  ngOnInit() {
-  }
+	@Output() toggleMenu = new EventEmitter();
+
+	ngOnInit() {
+	}
+
+	goToRoute(link) {
+		this.toggleMenu.emit();
+		this.router.navigate([link]);
+	}
 
 }

@@ -7,32 +7,33 @@ import {ProjectsComponent} from "./projects/projects.component";
 
 const appRoutes: Routes = [
 
-    {
-        path: 'main',
-        component: MainComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'register',
-        component: RegisterComponent
-    },
-    {
-        path: 'projects',
-        component: ProjectsComponent
-    },
-    {
-        path: '',
-        redirectTo: '/main',
-        pathMatch: 'full'
-    },
-    {
-        path: '**',
-        redirectTo: '/main'
-    }
+	{
+		path: 'main',
+		component: MainComponent,
+		canActivate: [AuthGuardService]
+	},
+	{
+		path: 'projects',
+		component: ProjectsComponent,
+		canActivate: [AuthGuardService]
+	},
+	{
+		path: 'login',
+		component: LoginComponent
+	},
+	{
+		path: 'register',
+		component: RegisterComponent
+	},
+	{
+		path: '',
+		redirectTo: '/main',
+		pathMatch: 'full'
+	},
+	{
+		path: '**',
+		redirectTo: '/main'
+	}
 
 ];
 

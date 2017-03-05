@@ -2,28 +2,51 @@ app-root {
 	height: 100%;
 	display: block;
 
-	app-menu {
-		position: fixed;
-		top: 0;
-		left: 0;
-		height: 100%;
+	.topNavBar {
+		width: 100%;
+		height: 70px;
+		background-color: $cl-secondary;
+
+		h1 {
+			font-size: $fs-xlarge;
+		}
+
+		@include flexbox();
+		@include align-items(center);
+		@include justify-content(space-between);
+
+		.toolBar {
+			@include flexbox();
+			@include align-items(center);
+
+			p {
+				font-size: $fs-large;
+			}
+		}
+		.toolBar.end {
+			@include justify-content(flex-end);
+		}
 	}
 
 	.holder {
 		display: block;
-		height: 100%;
+		height: calc(100% - 70px);
 		width: 100%;
-		position: fixed;
-
-		-webkit-transition: transform 250ms;
-		-moz-transition: transform 250ms;
-		-o-transition: transform 250ms;
-		transition: transform 250ms;
+		position: relative;
+		overflow: hidden;
 
 		.app-content {
-			height: calc(100% - 70px);
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
 			width: 100%;
 			background-color: $cl-bright;
+
+			-webkit-transition: left 250ms;
+			-moz-transition: left 250ms;
+			-o-transition: left 250ms;
+			transition: left 250ms;
 
 			.centeredContent {
 				height: 100%;
@@ -36,36 +59,17 @@ app-root {
 			}
 		}
 
-		.topNavBar {
-			width: 100%;
-			height: 70px;
-			background-color: $cl-secondary;
-
-			h1 {
-				font-size: $fs-xlarge;
-			}
-
-			@include flexbox();
-			@include align-items(center);
-			@include justify-content(space-between);
-			.toolBar {
-				@include flexbox();
-				@include align-items(center);
-
-				p {
-					font-size: $fs-large;
-				}
-			}
-			.toolBar.end {
-				@include justify-content(flex-end);
-			}
+		app-menu {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
 		}
 	}
 	.holder.openMenu {
-		-webkit-transform: translateX(200px);
-		-moz-transform: translateX(200px);
-		-o-transform: translateX(200px);
-		transform: translateX(200px);
+		.app-content {
+			left: 200px;
+		}
 	}
 }
 
@@ -320,13 +324,14 @@ textarea {
 		width: 100%;
 		li {
 			width: 100%;
+			border-bottom: 1px solid $cl-bright;
 			a {
 				text-decoration: none;
 				width: 100%;
-				text-align: center;
 				color: $cl-bright;
 				padding: 15px 10px;
 				display: block;
+				cursor: pointer;
 			}
 		}
 	}

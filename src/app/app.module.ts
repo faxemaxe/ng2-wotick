@@ -18,6 +18,8 @@ import { CustomerPlateComponent } from './customer-plate/customer-plate.componen
 import {OrderByDatePipe} from "./pipe/orderbydate.pipe";
 import { MenuComponent } from './menu/menu.component';
 import { ProjectsComponent } from './projects/projects.component';
+import {ProjectsService} from "./projects.service";
+import { CustomSelectComponent } from './custom-select/custom-select.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +31,8 @@ import { ProjectsComponent } from './projects/projects.component';
 		CustomerPlateComponent,
 		OrderByDatePipe,
 		MenuComponent,
-		ProjectsComponent
+		ProjectsComponent,
+		CustomSelectComponent
 	],
 	imports: [
 		BrowserModule,
@@ -45,7 +48,8 @@ import { ProjectsComponent } from './projects/projects.component';
 	providers: [
 		AuthService,
 		AuthGuardService,
-		CustomerService
+		CustomerService,
+		ProjectsService
 	],
 	bootstrap: [AppComponent]
 })
