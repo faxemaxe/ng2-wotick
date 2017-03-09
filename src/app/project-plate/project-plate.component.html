@@ -1,0 +1,57 @@
+<div class="cardStyle">
+
+  <form #projectForm="ngForm" novalidate>
+    <div class="cardHeader">
+      <i class="material-icons" *ngIf="!project.isActive">check</i>
+      <i class="material-icons" *ngIf="project.isActive">schedule</i>
+      <div class="headerContent">
+        <input type="text"
+               name="name"
+               class="textInput"
+               placeholder="project name"
+               [(ngModel)]="project.name"
+               [readonly]="!editable"
+               required>
+      </div>
+    </div>
+    <div class="cardContent">
+      <p [hidden]="editable">{{project.description}}</p>
+      <textarea name="description"
+                minlength="5"
+                rows="4"
+                placeholder="project description"
+                [hidden]="!editable"
+                [(ngModel)]="project.description"
+                required></textarea>
+    </div>
+  </form>
+  <div class="cardFooter">
+    <div class="chipsHolder">
+      <div class="infoChip bg--cl-lgray">
+        <i class="material-icons">person</i>
+        &nbsp;
+        <span>customer</span>
+      </div>
+    </div>
+
+    <div class="buttonHolder">
+      <button *ngIf="editable" class="btn--flat fc--cl-alert" (click)="cancelEdit()">cancel</button>
+      <button *ngIf="editable" class="btn--flat" (click)="saveEdit()" [disabled]="projectForm.form.invalid">save
+      </button>
+
+      <button *ngIf="!editable" class="btn--flat fc--cl-alert" (click)="dialogIsOpen = true">delete</button>
+      <button *ngIf="!editable" class="btn--flat" (click)="startEdit()">edit</button>
+    </div>
+  </div>
+
+  <div class="dialogOverlay" *ngIf="dialogIsOpen">
+    <p class="ta--center">
+      Are you sure?
+    </p>
+    <div class="overlayAction">
+      <button class="btn--flat fc--cl-primary" (click)="dialogIsOpen = false">no, don't</button>
+      <button class="btn--flat fc--cl-alert" (click)="deleteCustomer()">yes, delete</button>
+    </div>
+  </div>
+
+</div>

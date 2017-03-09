@@ -22,6 +22,9 @@ export class CustomSelectComponent implements ControlValueAccessor {
 	onTouched: any = () => {
 	};
 
+	isOpen: boolean = false;
+	selectText: string = "";
+
 	get value() {
 		return this._value;
 	}
@@ -48,7 +51,8 @@ export class CustomSelectComponent implements ControlValueAccessor {
 	}
 
 	select(value) {
-		console.log(value);
-		this.value = value;
+		this.isOpen = false;
+		this.selectText = value['name'];
+		this.value = value['customerUUID'];
 	}
 }

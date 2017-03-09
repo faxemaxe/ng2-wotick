@@ -36,6 +36,9 @@ app-root {
 		overflow: hidden;
 
 		.app-content {
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -74,6 +77,52 @@ app-root {
 }
 
 // form elements
+.selectHolder {
+	width: 250px;
+	height: 44px;
+	position: relative;
+
+	.selectBar {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid $cl-lgray;
+
+		@include flexbox();
+		@include align-items(center);
+
+		p {
+			flex-grow: 1;
+		}
+	}
+
+	.selectOptions {
+		background-color: $cl-bright;
+		width: 100%;
+		border: 1px solid $cl-lgray;
+		border-top: none;
+		display: none;
+
+		.selectOption {
+			padding: 10px;
+			cursor: pointer;
+			width: 100%;
+		}
+		.selectOption:hover {
+			background-color: rgba(0, 0, 0 , 0.1);
+		}
+
+	}
+}
+.selectHolder.open {
+
+	.selectOptions {
+		display: block;
+		position: absolute;
+		z-index: 1;
+	}
+
+}
+
 .textInput {
 	border: none;
 	border-radius: 0;

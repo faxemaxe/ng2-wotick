@@ -1,7 +1,11 @@
-<div>
+<div class="selectHolder {{isOpen ? 'open' : ''}}">
 
-  <div class="p--10">choose...</div>
-  <div class="p--10" *ngFor="let l of list" (click)="select(l['customerUUID'])">{{ l['name'] }}</div>
-
+	<div class="selectBar" (click)="isOpen = !isOpen">
+		<p>{{ selectText.length > 0 ? selectText : 'choose...' }}</p>
+		<i class="material-icons">keyboard_arrow_down</i>
+	</div>
+	<div class="selectOptions">
+		<div class="selectOption" *ngFor="let l of list" (click)="select(l)">{{ l['name'] }}</div>
+	</div>
 
 </div>

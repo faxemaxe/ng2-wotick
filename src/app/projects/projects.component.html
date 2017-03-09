@@ -21,21 +21,15 @@
 		</form>
 
 		<button (click)="createProj()">ADD</button>
-
+		<p>
+			Form Data: <br>
+			{{form.value | json}}
+		</p>
 	</div>
 
 </div>
+<div class="wrapper">
 
-<p>
-	Form Data: <br>
-	{{form.value | json}}
+	<app-project-plate *ngFor="let proj of projects" [project]="proj"></app-project-plate>
 
-	<br><br>
-	Customers: <br>
-	{{customers | json}}
-
-	<br><br>
-	Projects: <br>
-	{{projects | json}}
-
-</p>
+</div>

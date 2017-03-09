@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ProjectsComponent } from './projects/projects.component';
 import {ProjectsService} from "./projects.service";
 import { CustomSelectComponent } from './custom-select/custom-select.component';
+import { ProjectPlateComponent } from './project-plate/project-plate.component';
 
 @NgModule({
 	declarations: [
@@ -32,7 +33,8 @@ import { CustomSelectComponent } from './custom-select/custom-select.component';
 		OrderByDatePipe,
 		MenuComponent,
 		ProjectsComponent,
-		CustomSelectComponent
+		CustomSelectComponent,
+		ProjectPlateComponent
 	],
 	imports: [
 		BrowserModule,
